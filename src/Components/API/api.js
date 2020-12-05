@@ -11,7 +11,7 @@ export let getData = {
             .then(response => response.data)
     },
     getWeatherByCoordinates(latitude,longitude,apiKey){
-        return axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&lang=ru&exclude=hourly,minutely&appid=${apiKey}`)
+        return axios.get(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&lang=ru&exclude=hourly,minutely&appid=${apiKey}`)
             .then(response => response.data)
     }
 }
