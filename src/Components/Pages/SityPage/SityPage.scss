@@ -1,0 +1,97 @@
+@import 'src/Styles/variables';
+
+.sitypage{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  &__content{
+    min-height: 350px;
+    padding: 1px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow:  0px 0px 25px rgba(0,0,0,0.04204);
+    background-color: #fff;
+    &-header{
+      font-size: 18px;
+      color:$blue!important;
+    }
+    & .row{
+      padding: 10px 0px 10px 0px!important;
+      &:last-child{
+        padding-bottom: 20px !important;
+      }
+    }
+    &-day{
+      span{
+        font-size: 16px;
+      }
+    }
+    &-speed{
+      span{
+        font-size: 16px;
+
+
+      }
+    }
+    &-row{
+      .column{
+        padding: 0px !important;
+      }
+    }
+    &-time{
+      display: none;
+    }
+    &-wind{
+      &-column{
+        padding: 0px !important;
+      }
+    }
+  }
+  & .ui.grid{
+    margin: 0px!important;
+  }
+  &__button{
+    background-color: white !important;
+    color: $blue!important;
+    margin-top: 15px!important;
+    font-weight: 500!important;
+    box-shadow:  0px 0px 25px rgba(0,0,0,0.04204) !important;
+  }
+
+}
+
+@media screen and (max-width: 767px){
+  .sitypage{
+    &__content{
+      &-row{
+        .column{
+          margin-bottom: 20px!important;
+        }
+      }
+      &-speed{
+        padding-top: 0px!important;
+      }
+      &-wind{
+        &-column{
+          display: flex!important;
+          flex-direction: column;
+          margin-bottom: 10px!important;
+          padding: 0px 1rem 0px 1rem !important;
+        }
+        span{
+          margin-bottom: 10px;
+        }
+      }
+      &-time{
+        display: block;
+        margin-bottom: 5px;
+        sup{
+          font-size: 10px;
+        }
+      }
+    }
+
+
+  }
+}

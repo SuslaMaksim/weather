@@ -1,0 +1,26 @@
+@import 'src/Styles/variables';
+
+.header{
+  &__title{
+    cursor: pointer;
+    transition: opacity .4s linear;
+    &:hover{
+      opacity: 0.8;
+      transition: opacity .4s linear;
+    }
+  }
+  &__input{
+    padding: 10px;
+    min-height: 30px;
+    background-color: $blue;
+    border-radius: 5px;
+    color: white;
+    box-shadow:  0px 0px 25px rgba(0,0,0,0.04204);
+    &-icon{
+      color: $blue;
+    }
+  }
+
+
+
+}
