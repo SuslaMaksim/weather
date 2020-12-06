@@ -36,6 +36,10 @@ let MainPage = ({cityName,otherDays,currentCity,someSityOfOurCountry})=>{
                     </Grid.Row>
                 </Grid>
             </div>
+            <div className='mainpage__warning'>
+                <p> Если приложение работает не корректно проверте подключение к геоданным</p>
+            </div>
+
         </div>
     )
 }

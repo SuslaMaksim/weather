@@ -2,4 +2,12 @@
 
 .body{
   width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__notFound{
+    margin: 50px auto;
+    font-size: 50px;
+
+  }
 }

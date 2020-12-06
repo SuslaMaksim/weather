@@ -1,13 +1,12 @@
 
 import {getData} from "../Components/API/api";
-const setCity = "SET_CITY";
 const currentCity = "SET_CURRENT_CITY";
 
 let InitialState = {
 
         cityName: '',
         apiKey: 'db775b25dcce0743bac3b9c39ee3610f',
-        date: new Date(1607126352*1000).toLocaleDateString(),
+        date: new Date().toLocaleDateString(),
         currentCity: null,
         currentCitysOhterDays: [],
         someSityOfOurCountry: [
@@ -94,7 +93,8 @@ let InitialState = {
                 id: 16
             },
 
-        ]
+        ],
+
 
 
 }
@@ -107,8 +107,10 @@ let mainReducer = (state = InitialState, action)=>{
                 cityName: action.cityName,
                 currentCity: {...action.city},
                 currentCitysOhterDays: action.daily.filter(item => new Date(item.dt *1000).toLocaleDateString() !== state.date)
+
             }
-        default: return state
+        default:
+            return state;
     }
 }
 export default mainReducer;
@@ -118,11 +120,16 @@ let setCurrentCityCreator  = (city,cityName,daily) => ({type:currentCity ,city, 
 
 export let getWeatherByCoordinate = (latitude,longitude) => async (dispatch,getState)=>{
 
-    let apiKey = getState().data.apiKey;
-    let {name} = await getData.getCityNameByCoordinates(latitude,longitude,apiKey);
-    let {current,daily} = await  getData.getWeatherByCoordinates(latitude,longitude,apiKey);
+     let apiKey = getState().data.apiKey;
+    try{
+        let {name} = await getData.getCityNameByCoordinates(latitude,longitude,apiKey);
+        let {current,daily} = await  getData.getWeatherByCoordinates(latitude,longitude,apiKey);
+        dispatch(setCurrentCityCreator(current,name,daily))
+    }catch (e) {
+        console.error(e)
+    }
 
-    dispatch(setCurrentCityCreator(current,name,daily))
+
 
 
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{memo} from 'react';
 import '../MainPage.scss';
 import {Grid} from "semantic-ui-react";
 import {getWeekDay,getTime,findeIcon } from "../../../Helper/helper";
@@ -102,4 +102,4 @@ let GridContainer = ({cityName,otherDays,currentCity})=>{
     )
 }
 
-export default GridContainer ;
+export default memo(GridContainer );

@@ -10,7 +10,8 @@ let Body = (props)=>{
         <div className='body'>
             <Switch>
                 <Route exact path='/' component = {()=> <ContainerMainPage/>}/>
-                <Route path='/city/:id' component = {()=> <ContainerCityPage/>}/>
+                <Route exact path='/city/:id' component = {()=> <ContainerCityPage/>}/>
+                <Route component={()=> <div className='body__notFound'>404 The page not found</div>} />
             </Switch>
         </div>
     )

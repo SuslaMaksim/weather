@@ -1,4 +1,4 @@
-import React,{useEffect,useState,useMemo} from 'react';
+import React,{useEffect} from 'react';
 import {usePositionHook} from "../../../UsePosition/UsePositionHook";
 import {connect} from "react-redux";
 import {MainPage} from "../../index";
@@ -6,15 +6,13 @@ import {getWeatherByCoordinate} from "../../../../Reducers/MainReduser";
 
 let ContainerMainPage = ({cityName,currentCity,otherDays,getWeatherByCoordinate,someSityOfOurCountry})=>{
 
-
-            let {latitude,longitude,err} = usePositionHook()
-
+    let {latitude,longitude} = usePositionHook()
 
     useEffect(()=>{
-        if(latitude && longitude && !err){
+        if(latitude && longitude){
             getWeatherByCoordinate(latitude,longitude)
-        }else return false
-    },[latitude,longitude,err])
+        }
+    },[getWeatherByCoordinate,latitude,longitude])
 
 
     return(
@@ -32,7 +30,7 @@ let mapStateToProps =(state)=>{
         cityName: state.data.cityName,
         currentCity: state.data.currentCity,
         otherDays: state.data.currentCitysOhterDays,
-        someSityOfOurCountry: state.data.someSityOfOurCountry
+        someSityOfOurCountry: state.data.someSityOfOurCountry,
     }
 }
 

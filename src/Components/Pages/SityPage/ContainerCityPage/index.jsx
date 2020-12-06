@@ -1,4 +1,4 @@
-import React,{useEffect,useMemo} from 'react';
+import React,{useEffect} from 'react';
 import {connect} from "react-redux";
 import {CityPage} from "../../index";
 import {getWeatherByCityName} from "../../../../Reducers/OtherCitysReduser";
@@ -8,13 +8,14 @@ import loading from '../../../../Assets/loading.gif'
 
 
 let ContainerCityPage = ({getWeatherByCityName,cityName,currentCitysDays,match,history})=>{
-    let city = match.params.id
-    useEffect(()=>{
-        if(city){
-            getWeatherByCityName(city)
-        }
 
-    },[])
+
+    let city = match.params.id;
+
+
+    useEffect(()=>{
+            if(city){getWeatherByCityName(city)}
+    },[getWeatherByCityName,city])
 
     return(
         <>

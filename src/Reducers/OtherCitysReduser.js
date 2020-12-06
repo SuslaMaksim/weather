@@ -29,10 +29,14 @@ let setCurrentsCities  = (cityName,daily) => ({type:setCurrentsCity, cityName,da
 
 export let getWeatherByCityName = (cityName) => async (dispatch,getState)=>{
     let apiKey = getState().citysData.apiKeys
-    let date = await getData.getWeatherByCityName(cityName,apiKey)
-    let {lat,lon} = date.coord;
-    let data = await  getData.getWeatherByCoordinates(lat,lon,apiKey);
-    dispatch(setCurrentsCities(cityName,data.daily))
+    try {
+        let date = await getData.getWeatherByCityName(cityName,apiKey)
+        let {lat,lon} = date.coord;
+        let data = await  getData.getWeatherByCoordinates(lat,lon,apiKey);
+        dispatch(setCurrentsCities(cityName,data.daily))
+    }catch (e) {
+        console.error(e)
+    }
 }
 
 
